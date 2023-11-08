@@ -1,5 +1,5 @@
 import express from 'express'
-
+import cors from 'cors'
 import { dbConnection } from './database/config'
 
 import {
@@ -15,6 +15,7 @@ dbConnection()
   .then(() => {
     // middlewares
     app.use(express.json())
+    app.use(cors())
 
     // routes
     app.use('/products', routerProduct)
