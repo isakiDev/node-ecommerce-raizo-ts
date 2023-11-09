@@ -33,8 +33,6 @@ const getProduct = async (req: Request, res: Response): Promise<Response> => {
       .populate('user', 'name')
       .populate('category', 'name')
 
-    console.log(product)
-
     if (product?.state == null) {
       return res.status(401).json({
         msg: 'The product is removed'
