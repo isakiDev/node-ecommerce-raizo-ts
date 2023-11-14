@@ -37,4 +37,19 @@ const ProductSchema = new Schema({
   }
 })
 
+ProductSchema.methods.toJSON = function () {
+  const { _v, _id, category, user, ...products } = this.toObject()
+
+  products.id = _id
+
+  products.user = user.name
+
+  products.category = {
+    id: category._id,
+    name: category.name
+  }
+
+  return products
+}
+
 export default model('Product', ProductSchema)

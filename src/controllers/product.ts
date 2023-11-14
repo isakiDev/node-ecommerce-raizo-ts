@@ -2,7 +2,7 @@ import { Request, Response } from 'express'
 import { Product } from '../models'
 
 const getAllProducts = async (req: Request, res: Response): Promise<Response> => {
-  const { limit = 5, skip = 0 } = req.query
+  const { limit = 8, skip = 0 } = req.query
 
   try {
     const [total, products] = await Promise.all([
@@ -32,8 +32,6 @@ const getProduct = async (req: Request, res: Response): Promise<Response> => {
     const product = await Product.findById(id)
       .populate('user', 'name')
       .populate('category', 'name')
-
-    console.log(product)
 
     if (product?.state == null) {
       return res.status(401).json({
