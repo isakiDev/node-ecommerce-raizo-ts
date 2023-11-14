@@ -2,7 +2,7 @@ import { Request, Response } from 'express'
 import { Product } from '../models'
 
 const getAllProducts = async (req: Request, res: Response): Promise<Response> => {
-  const { limit = 5, skip = 0 } = req.query
+  const { limit = 8, skip = 0 } = req.query
 
   try {
     const [total, products] = await Promise.all([
