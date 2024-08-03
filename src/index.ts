@@ -15,7 +15,7 @@ dbConnection()
   .then(() => {
     // middlewares
     app.use(express.json())
-    app.use(cors())
+    app.use(cors({ origin: 'https://isakidev-raizo.netlify.app' }))
 
     // routes
     app.use('/products', routerProduct)
